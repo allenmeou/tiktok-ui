@@ -1,20 +1,31 @@
 import { useState } from "react";
 import "./App.css";
 
-const gifts = ["CPU i9", " RAM 32GB RGB", "RGB KEYBOARD"];
-
 function App() {
-  const [gift, setGift] = useState();
+  const [job, setJob] = useState("");
+  const [jobs, setJobs] = useState([]);
 
-  const randomGift = () => {
-    const index = Math.floor(Math.random() * gifts.length);
-    setGift(gifts[index]);
+  const handleSubmit = () => {
+    setJobs((prev) => [...prev, job]);
+    setJob("");
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>{gift || "Chưa có phần thưởng"}</h1>
-      <button onClick={randomGift}>Lấy phần thường</button>
+    <div style={{ padding: 200 }}>
+      <input
+        value={job}
+        type="text"
+        onChange={(e) => {
+          setJob(e.target.value);
+        }}
+      />
+      <button onClick={handleSubmit}> Add </button>
+
+      <ul>
+        {jobs.map((job, index) => (
+          <li key={index}>{job}</li>
+        ))}
+      </ul>
     </div>
   );
 }
