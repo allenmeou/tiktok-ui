@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   const storageJobs = JSON.parse(localStorage.getItem("job"));
 
-  const [jobs, setJobs] = useState(storageJobs);
+  const [jobs, setJobs] = useState(storageJobs ?? []);
   const [job, setJob] = useState("");
 
   const inputRef = useRef();
@@ -33,6 +33,7 @@ function App() {
           setJob(e.target.value);
         }}
       />
+
       <button onClick={handleSubmit}>Add</button>
 
       <ul>
