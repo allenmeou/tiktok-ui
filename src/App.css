@@ -36,9 +36,24 @@
     transform: rotate(360deg);
   }
 }
-/* 
-.center {
+input {
+  padding: 7px 30px;
+  margin: 0 5px;
+  border-radius: 10px;
+  outline: none;
+}
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.app {
   display: flex;
-  justify-content: center;
-  align-items: center;
-} */
+  list-style-type: none;
+}
+.app li {
+  margin: 10px 0;
+}
+.app button {
+  margin: 10px 10px;
+  cursor: pointer;
+}
