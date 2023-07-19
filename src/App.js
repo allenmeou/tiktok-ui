@@ -27,9 +27,17 @@ function App() {
   const handleEdit = (job) => {
     console.log(job);
     const liElement = document.querySelector("li");
-    console.log(liElement);
     liElement.innerHTML = "";
-    setJob(job);
+    // setJob(job);
+
+    const inputEditEl = document.querySelector(".inputEdit");
+    const buttonSubmitEditEl = document.querySelector(".submitEdit");
+    if (handleEdit) {
+      liElement.style.display = "none";
+      inputEditEl.style.display = "block";
+      buttonSubmitEditEl.style.display = "block";
+      setJob((prev) => [...prev, job]);
+    }
   };
 
   const handleDelete = () => {
@@ -43,19 +51,30 @@ function App() {
         ref={inputRef}
         value={job}
         type="text"
+        className="inputTask"
         placeholder="new task"
         onChange={(e) => {
           setJob(e.target.value);
         }}
       />
-
       <button onClick={handleSubmit}>Add</button>
-
       <ul>
         {jobs.map((job, index) => (
           <div className="app" key={index}>
             <input type="checkbox" name="" id="" />
             <li>{job}</li>
+            <input
+              type="text"
+              className="inputEdit"
+              style={{ display: "none" }}
+            />
+            <button
+              className="submitEdit"
+              onClick={handleSubmit}
+              style={{ display: "none" }}
+            >
+              Add
+            </button>
             <button onClick={() => handleEdit(job)}>edit</button>
             <button onClick={handleDelete}>delete</button>
           </div>
